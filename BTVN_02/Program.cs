@@ -84,6 +84,7 @@ namespace BTVN_02
         //Case 2: xuat danh sach sinh vien
         static void DisplayStudents(List<Student> studentList)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("-------- Danh sách chi tiết thông tin sinh viên -------");
             foreach (Student student in studentList)
             {
@@ -96,6 +97,7 @@ namespace BTVN_02
         // Case 3: xuat danh sach sinh vien theo khoa
         static void DisplayStudentsByFaculty(List<Student> studentList, string faculty)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("==== Danh sách sinh viên khoa {0}", faculty);
             var students = studentList.Where(s => s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase));
             DisplayStudents(studentList);
@@ -105,6 +107,7 @@ namespace BTVN_02
         //Case 4: xuat danh sach sinh vien co diem trung binh tren 5.0
         static void DisplayStudentsAboveAverage(List<Student> studentList, float minDTB)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("==== Danh sách sinh viên có điểm trung bình trên {0} ====", minDTB);
             var students = studentList.Where(s => s.AverageScore > minDTB);
             DisplayStudents(studentList);
@@ -114,6 +117,7 @@ namespace BTVN_02
         //Case 5: sap xep danh sach sinh vien theo diem trung binh tang dan
         static void SortStudentsByAverageScore(List<Student> studentList)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("==== Danh sách sinh viên sắp xếp theo điểm trung bình tăng dần ====");
             var sortedStudents = studentList.OrderBy(s => s.AverageScore).ToList();
             DisplayStudents(sortedStudents);
@@ -123,6 +127,7 @@ namespace BTVN_02
         //Case 6: ds sinh vien co DiemTB >= 5 va thuoc khoa CNTT
         static void DisplayStudentsByFacultyAndScore(List<Student> studentList, string faculty, float minDTB)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("==== Danh sách sinh viên có điểm TB >= {0} và thuộc khoa {1}", minDTB, faculty);
             var students = studentList.Where(s => s.AverageScore >= minDTB && s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase)).ToList();
             DisplayStudents(students);
@@ -132,6 +137,7 @@ namespace BTVN_02
         //Case 7: xuat ds sinh vien co DTB cao nhat va thuoc khoa CNTT
         static void DisplayStudentsWithHighestAverageScoreByFaculty(List<Student> studentList, string faculty)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine("==== Danh sách sinh viên có điểm TB cao nhất thuộc khoa {0} ====", faculty);
             var maxDTB = studentList.Where(s => s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase)).Max(s => s.AverageScore);
             var topStudents = studentList.Where(s => s.AverageScore == maxDTB && s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -143,6 +149,7 @@ namespace BTVN_02
         //Xuat sac (DTB >= 9.0), Gioi (8 <= DTB < 9.0),Kha (7.0 <= DTB < 8.0), Trung Binh (5.0 <= DTB < 7), Yeu (4 <= DTB < 5.0), Kem (DTB < 4.0)
         static void CountStudentsByClassification(List<Student> studentList)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             int xs = studentList.Count(s => s.AverageScore >= 9.0f);
             int g = studentList.Count(s => s.AverageScore >= 8.0f && s.AverageScore < 9.0f);
             int k = studentList.Count(s => s.AverageScore >= 7.0f && s.AverageScore < 8.0f);
