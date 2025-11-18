@@ -40,7 +40,6 @@ namespace BTVN_02
                         foreach (var stu in studentList)
                         {
                             stu.Output();
-                            Console.WriteLine("-----------------------");
                         }
                         break;
                     case "3":
@@ -79,16 +78,19 @@ namespace BTVN_02
             Student student = new Student();
             student.Input();
             studentList.Add(student);
-            Console.WriteLine("Thêm sinh viên thành công!");
+            Console.WriteLine("------- Thêm sinh viên thành công! -------");
+            Console.WriteLine("\n");
         }
         //Case 2: xuat danh sach sinh vien
         static void DisplayStudents(List<Student> studentList)
         {
-            Console.WriteLine("==== Danh sách chi tiết thông tin sinh viên ====");
+            Console.WriteLine("-------- Danh sách chi tiết thông tin sinh viên -------");
             foreach (Student student in studentList)
             {
                 student.Output();
             }
+            Console.WriteLine("-----------------------");
+            Console.WriteLine("\n");
         }
 
         // Case 3: xuat danh sach sinh vien theo khoa
@@ -97,6 +99,7 @@ namespace BTVN_02
             Console.WriteLine("==== Danh sách sinh viên khoa {0}", faculty);
             var students = studentList.Where(s => s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase));
             DisplayStudents(studentList);
+            Console.WriteLine("\n");
         }
 
         //Case 4: xuat danh sach sinh vien co diem trung binh tren 5.0
@@ -105,6 +108,7 @@ namespace BTVN_02
             Console.WriteLine("==== Danh sách sinh viên có điểm trung bình trên {0} ====", minDTB);
             var students = studentList.Where(s => s.AverageScore > minDTB);
             DisplayStudents(studentList);
+            Console.WriteLine("\n");
         }
 
         //Case 5: sap xep danh sach sinh vien theo diem trung binh tang dan
@@ -113,6 +117,7 @@ namespace BTVN_02
             Console.WriteLine("==== Danh sách sinh viên sắp xếp theo điểm trung bình tăng dần ====");
             var sortedStudents = studentList.OrderBy(s => s.AverageScore).ToList();
             DisplayStudents(sortedStudents);
+            Console.WriteLine("\n");
         }
 
         //Case 6: ds sinh vien co DiemTB >= 5 va thuoc khoa CNTT
@@ -121,6 +126,7 @@ namespace BTVN_02
             Console.WriteLine("==== Danh sách sinh viên có điểm TB >= {0} và thuộc khoa {1}", minDTB, faculty);
             var students = studentList.Where(s => s.AverageScore >= minDTB && s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase)).ToList();
             DisplayStudents(students);
+            Console.WriteLine("\n");
         }
 
         //Case 7: xuat ds sinh vien co DTB cao nhat va thuoc khoa CNTT
@@ -130,6 +136,7 @@ namespace BTVN_02
             var maxDTB = studentList.Where(s => s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase)).Max(s => s.AverageScore);
             var topStudents = studentList.Where(s => s.AverageScore == maxDTB && s.Faculty.Equals(faculty, StringComparison.OrdinalIgnoreCase)).ToList();
             DisplayStudents(topStudents);
+            Console.WriteLine("\n");
         }
 
         //Case 8: cho biet so luong cua tung xep loai trong danh sach. Biet rang xep loai chia theo thang diem 10
@@ -150,6 +157,7 @@ namespace BTVN_02
             Console.WriteLine("Yếu: {0}", y);
             Console.WriteLine("Kém: {0}", kem);
             Console.WriteLine("---------------------------");
+            Console.WriteLine("\n");
         }
     }
 }
